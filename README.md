@@ -14,6 +14,9 @@ $ cd aob2869_cse5335-project-1-
 $ npm install
 $ npm start
 ```
+Alternatively,
+
+
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
