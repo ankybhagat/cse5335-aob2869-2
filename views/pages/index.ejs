@@ -2,6 +2,17 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- maps -->
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="PATH_TO_PLUGIN/jquery.ui.map.js"></script>
+
+
+
+
+<!-- maps -->
+
   <script> 
   $( document ).ready(function() {
     $( "#button1" ).click(function() {
@@ -9,12 +20,21 @@
   $.get( "/country", function( data ) {
   
   text="";
+  text +="Code"+ "  " + "Country" + "  " + "Population" + "<br>"+ "<br>";
   for (i = 0; i < data.length; i++) { 
-    text += data[i]["code"] + data[i]["name"] + data[i]["population"]+ "<br>";
 
+
+    text += data[i]["code"] + "  "+ data[i]["name"] + "  " +data[i]["population"]+ data[i]["latitude"]+ data[i]["longitude"]+"<br>";
+
+    
     $( "#tb1" ).html( text );
-  console.log(text);
+    console.log(text);
+
+
 }
+// maps
+// $('#map_canvas').gmap();
+
 });
     
 });
@@ -23,13 +43,43 @@
   </script>
 </head>
 <body>
+
+<h1 align="center"> Country Wise Population </h1>
 <button id="button1"> Get Data </button>
 
+
+<!-- <table id ="tb1" align="center">
+      <tr>
+        <th>Code</th>
+        <th>Country</th>
+        <th>Population</th>
+      </tr>
+      <tr>
+        <td>{{country.code}}</td>
+        <td>{{country.name}}</td>
+        <td>{{country.population}}</td>
+      </tr>
+    </center>
+    </table>
+ -->
     <div id="tb1" align="center">
       
     </div>
  
 
+  <!-- maps -->
+<div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+   
+  <!-- maps -->
 
 </body>
 </html>
