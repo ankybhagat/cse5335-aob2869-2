@@ -14,15 +14,14 @@ $ cd aob2869_cse5335-project-1-
 $ npm install
 $ npm start
 ```
-Alternatively,
-
-
+	
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 ## Deploying to Heroku
 
 ```
+$ heroku login			#login using heroku credentials
 $ heroku create
 $ git push heroku master
 $ heroku open
@@ -30,6 +29,14 @@ $ heroku open
 or
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+Run locally,
+
+$ git clone https://github.com/ankybhagat/aob2869_cse5335-project-1-.git # or clone your own fork
+$ heroku login			#login using heroku credentials
+$ heroku create
+$ git push heroku master
+$ heroku local web
 
 ## Documentation
 

@@ -10,94 +10,159 @@
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
-
+<!-- 
   <script type="text/javascript"src="http://www.google.com/jsapi?key=AIzaSyAQHP-kI4xDhCuFENrJ6sMot4b2rOdS8oY">
-  <script type="text/javascript"charset="utf-8">google.load("maps","2.x"); google.load("jquery","1.3.1");</script>
+  <script type="text/javascript"charset="utf-8">google.load("maps","2.x"); google.load("jquery","1.3.1");</script> -->
 
 <!-- maps -->
+<style type="text/css">
+  
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    -webkit-animation-delay: 5s; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+    animation-delay: 5s;
+}
+
+@-webkit-keyframes mymove {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+</style>
+
+  
   <script> 
   $('body').css('background-image', 'url("bg.jpg")');
   $( document ).ready(function() {
-    $( "#button1" ).click(function() {
+    $( "#button" ).click(function() {
+      tableRows = "";
+      docRowCount=0;
+      ids=0;
+      kk();
+
+    });
+
   
-      $.get( "/country", function( data ) {
-   
+  function kk(){
+    setTimeout(function(){
+       
+       nnn();
 
-        text="";
-        text +="Code"+ " , " + "Country" + " , " + "Population" + " , "+ "Latitude" + " , " + "Longitude" + "<br>"+ "<br>";
-        for (i = 0; i < data.length; i++) { 
+      },2000);         
+   }
 
 
-        $( "#tb1" ).append('<br />');
+  
+ function nnn (){
 
-        text += data[i]["code"] + " , "+ data[i]["name"]  + " , " +data[i]["population"]+ " , "+ data[i]["latitude"]+ " , "+ data[i]["longitude"]+"<br>";
+  $.ajax({
+  url: "/country",
+  type: "get", //send it through get method
+  data:{id:ids},
+  success: function(response) {
+    //Do Something
+    console.log(response);
+    console.log(response.toString());
 
+    datam = response;
+     tableRows =  "<tr><td>"+datam.code+"</td> <td>"+datam.name+"</td> <td>"+datam.population+"</td><td>"+datam.latitude+"</td><td>"+datam.longitude+"</td></tr>";
+       $( "#tbody1" ).append(tableRows);
+       ids++;
+      kk(); 
+      console.log(response);
+  },
+  error: function(xhr) {
+    //Do Something to handle error
+  }
+});
+  
+ }
+
+});
+
+
+      // $.get( "/country", function( data ) {
+        
+
+      //     setTimeout(function(){
+      //       function getData();
+
+      //     },500);    
+
+// function getData(){
+//         $.each(data , function(){
+//             tableRows +=  "<tr><td>"+this.code+"</td> <td>"+this.name+"</td> <td>"+this.population+"</td><td>"+this.latitude+"</td><td>"+this.longitude+"</td></tr>";
+//             docRowCount=docRowCount+1 ;
+
+
+//           });
+// }
           
-        $( "#tb1" ).html( text );
-         console.log(text);
+//             $( "#tbody1" ).append(tableRows);
 
 
-}
-// maps
-// $('#map_canvas').gmap();
+//       } );
 
-});
-    
-});
-});
+//     });
+//   });   //get closed here
 
+        
     </script>
+
   </head>
 <body>
 
+
 <h1 align="center"> Country Wise Population </h1>
-<button id="button1"> Get Data </button>
 
 
-<!-- <table id ="tb1" align="center">
-      <tr>
-        <th>Code</th>
-        <th>Country</th>
-        <th>Population</th>
-      </tr>
-      <tr>
-        <td>{{country.code}}</td>
-        <td>{{country.name}}</td>
-        <td>{{country.population}}</td>
-      </tr>
-    </center>
-    </table>
- -->
-    <table id="tb1" align="center">
+
       
-    </table>
- 
+      <button id="button"> Get Data </button>
+      <table id="table1">
+        <thead>
+            <tr>
+              <th>Code</th>
+              <th>Country</th>
+              <th>Population</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
 
-  <!-- maps -->
 
-<div id="map" align="middle">
-  
-  <img src="/maps.jpg" alt="Countries" style="width:500px;height:400px ;>
-  
+            </tr>
+        <thead>
+        <tbody id="tbody1">
+        
+        </tbody>
 
-</div>
-<style>#map { align:middle; width:500px; height:500px; }
-<background-image="/bg.jpg">
-
-</style>
-<!-- <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script> -->
-   
-  <!-- maps -->
-
-</body>
+      </table> 
+  </body>
+     
 </html>

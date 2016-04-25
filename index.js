@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var pg = require('pg');
+
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -13,7 +15,22 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+})
+
 app.get('/country', function(request, response) {
+
+  var x = request.param('id');
+
 	var country= [
   {
     "code": "AD",
@@ -97,8 +114,9 @@ app.get('/country', function(request, response) {
   ]
  
   response.setHeader('Content-Type', 'application/json');
-    response.send(JSON.stringify(country));
+    response.send(country[x]);
 });
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
