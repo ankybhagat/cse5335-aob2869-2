@@ -27,7 +27,7 @@ app.get('/db', function (request, response) {
         {
          // var result.rows = JSON.parse(results);
          // console.log(results);
-         response.json('/db', {"results": result.rows} ); 
+         response.json('/db', {results: result.rows} ); 
          // response.json({"Code":result.rows,"Country":result.rows,"Population":result.rows});
        }
     });

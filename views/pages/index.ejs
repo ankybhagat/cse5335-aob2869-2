@@ -95,13 +95,14 @@ div {
   //   console.log(response.code);
   // console.log(response.Code[ids]); 
     datam = response;
-     tableRows =  "<tr><td>"+datam.Code[ids].code+"</td> <td>"+datam.name+"</td> <td>"+datam.population+"</td></tr>";
+    console.log(datam.results[ids].code);
+    console.log(ids);
+     tableRows =  "<tr><td>"+datam.results[ids].code+"</td> <td>"+datam.results[ids].name+"</td> <td>"+datam.results[ids].population+"</td></tr>";
 
-  //    tableRows.hide();
-  //   $('tr:last-child').after(tableRows);
-  // tableRows.fadeIn("slow");
+    //  tableRows.hide();
+    // tableRows.fadeIn("slow");
 
-        $( "#tbody1" ).append(tableRows);
+        $( "#tbody1" ).prepend(tableRows);
 
        ids++;
       kk(); 
@@ -156,6 +157,7 @@ div {
       <table id="table1">
         <thead>
             <tr>
+              
               <th>Code</th>
               <th>Country</th>
               <th>Population</th>
