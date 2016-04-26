@@ -25,7 +25,8 @@ app.get('/db', function (request, response) {
       else
         {
          // var result.rows = JSON.parse(results);
-         response.render('pages/db', {results: result.rows} ); }
+
+         response.render.JSON('pages/db', {results: result.rows} ); }
     });
   
   });
