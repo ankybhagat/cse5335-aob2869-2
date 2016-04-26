@@ -25,7 +25,7 @@ app.get('/db', function (request, response) {
       else
         {
          // var result.rows = JSON.parse(results);
-         console.log(results);
+         // console.log(results);
 
          response.render('pages/db', {results: result.rows} ); }
     });
