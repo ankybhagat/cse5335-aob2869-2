@@ -89,9 +89,8 @@ div {
   
   success: function(response) {
     //Do Something
-    console.log(response);
-    console.log(response.toString());
-
+    console.log(response["results"]);
+  
     datam = response;
      tableRows =  "<tr><td>"+datam.code+"</td> <td>"+datam.name+"</td> <td>"+datam.population+"</td><td></td></tr>";
        $( "#tbody1" ).append(tableRows);
