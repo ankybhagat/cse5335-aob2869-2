@@ -83,7 +83,7 @@ div {
  function nnn (){
 
   $.ajax({
-  url: "/country",
+  url: "/db",
   type: "get", //send it through get method
   data:{id:ids},
   success: function(response) {
@@ -92,7 +92,7 @@ div {
     console.log(response.toString());
 
     datam = response;
-     tableRows =  "<tr><td>"+datam.code+"</td> <td>"+datam.name+"</td> <td>"+datam.population+"</td><td>"+datam.latitude+"</td><td>"+datam.longitude+"</td></tr>";
+     tableRows =  "<tr><td>"+datam.code+"</td> <td>"+datam.name+"</td> <td>"+datam.population+"</td><td></td></tr>";
        $( "#tbody1" ).append(tableRows);
        ids++;
       kk(); 
