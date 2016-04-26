@@ -85,7 +85,9 @@ div {
   $.ajax({
   url: "/db",
   type: "get", //send it through get method
-  data:{id:ids},
+  dataType: 'json',
+  data:JSON.stringify{id:ids},
+  
   success: function(response) {
     //Do Something
     console.log(response);
@@ -142,9 +144,7 @@ div {
 
 <h1 align="center"> Country Wise Population </h1>
 
-
-
-      
+     
       <button id="button"> Get Data </button>
       <table id="table1">
         <thead>
