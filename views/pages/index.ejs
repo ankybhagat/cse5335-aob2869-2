@@ -93,10 +93,16 @@ div {
   
     datam = response;
      tableRows =  "<tr><td>"+datam.code+"</td> <td>"+datam.name+"</td> <td>"+datam.population+"</td><td></td></tr>";
-       $( "#tbody1" ).append(tableRows);
+
+     tableRows.hide();
+    $('tr:last-child').after(tableRows);
+  tableRows.fadeIn("slow");
+
+       // $( "#tbody1" ).append(tableRows);
+
        ids++;
       kk(); 
-      console.log(tableRows);
+      console.log(response);
   },
   error: function(xhr) {
     //Do Something to handle error
