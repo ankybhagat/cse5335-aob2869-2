@@ -23,13 +23,11 @@ app.get('/db', function (request, response) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.sendFile('pages/db', {results: result.rows} ); }
+       { response.render('pages/db', {results: result.rows} ); }
     });
   
   });
 })
-
-
 
 
 app.listen(app.get('port'), function() {
