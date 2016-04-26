@@ -91,9 +91,9 @@ div {
   success: function(response) {
     //Do Something
     // console.log(response.render["results"]);
-  
+  console.log(response.Code[ids]); 
     datam = response;
-     tableRows =  "<tr><td>"+datam.code+"</td> <td>"+datam.name+"</td> <td>"+datam.population+"</td><td></td></tr>";
+     tableRows =  "<tr><td>"+datam.Code[ids].code+"</td> <td>"+datam.Code[ids].name+"</td> <td>"+datam.Code[ids].population+"</td></tr>";
 
   //    tableRows.hide();
   //   $('tr:last-child').after(tableRows);
