@@ -17,7 +17,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/db', function (request, response) {
-  pg.connect(con, function(err, client, done) {
+  pg.connect(process.env."postgres://zfqdzrffxhdbgw:TvM7zTFns7nctywAEFi1_8MXVw@ec2-54-197-254-213.compute-1.amazonaws.com:5432/dapsioq4fqt59o", function(err, client, done) {
        
     client.query('SELECT * FROM country', function(err, result) {
       done();
