@@ -26,7 +26,7 @@ app.get('/db', function (request, response) {
         {
          // var result.rows = JSON.parse(results);
 
-         response.render.JSON('pages/db', {results: result.rows} ); }
+         response.render.JSON.Stringify('pages/db', {results: result.rows} ); }
     });
   
   });
