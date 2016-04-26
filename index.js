@@ -24,7 +24,7 @@ app.get('/db', function (request, response) {
        { console.error(err); response.send("Error " + err); }
       else
         {
-                 response.render('pages/db', {results: result.rows} ); 
+                 response.send('pages/db', {results: result.rows} ); 
                }
     });
   
