@@ -17,6 +17,8 @@ app.get('/', function(request, response) {
 
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    abc=0;
+    for(abc=0;abc<20;abc++){
     client.query('SELECT * FROM country', function(err, result) {
       done();
       if (err)
@@ -24,6 +26,7 @@ app.get('/db', function (request, response) {
       else
        { response.render('pages/db', {results: result.rows} ); }
     });
+  }
   });
 })
 
