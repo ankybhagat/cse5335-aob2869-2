@@ -85,8 +85,7 @@ div {
   $.ajax({
   url: "/db",
   type: "get", //send it through get method
-  dataType: 'json',
-  data:JSON.stringify({id:ids}),
+  data:({id:ids}),
   
   success: function(response) {
     //Do Something
