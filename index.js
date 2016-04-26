@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
-var con="https://postgres://zfqdzrffxhdbgw:TvM7zTFns7nctywAEFi1_8MXVw@ec2-54-197-254-213.compute-1.amazonaws.com:5432/dapsioq4fqt59o";
+var con="postgres://zfqdzrffxhdbgw:TvM7zTFns7nctywAEFi1_8MXVw@ec2-54-197-254-213.compute-1.amazonaws.com:5432/dapsioq4fqt59o";
 // var con="postgres://postgres:140392@localhost/postgres";
 
 app.set('port', (process.env.PORT || 5000));
