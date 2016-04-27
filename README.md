@@ -99,7 +99,7 @@ Using WebSockets on Heroku with Node.js
   Configuring database and adding animations.
   
 ○ What aspect of the implementation did you find hard, if any, and why?
- None.
+None.
  
 ○ If you were to use these technologies professionally, what would be your biggest
 concern?
