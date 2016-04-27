@@ -20,23 +20,24 @@
 table {
     border-collapse: collapse;
     width: 100%;
+    align:center;
 }
 
 th, td {
-    text-align: left;
-    padding: 8px;
+    text-align: center;
+    padding: 3px;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-    background-color: #4CAF50;
+    background-color: #4FBF80;
     color: white;
 }
 
 div {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 40px;
     background: red;
     position: relative;
     -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
@@ -46,12 +47,12 @@ div {
 }
 
 @-webkit-keyframes mymove {
-    from {left: 0px;}
+    from {left: 200px;}
     to {left: 200px;}
 }
 
 @keyframes mymove {
-    from {left: 0px;}
+    from {left: 200px;}
     to {left: 200px;}
 }
 
@@ -65,23 +66,24 @@ div {
       tableRows = "";
       docRowCount=0;
       ids=0;
-      kk();
+      timeout();
 
     });
 
   
-  function kk(){
+  function timeout(){
     setTimeout(function(){
-       
-       nnn();
+       docRowCount++;
+       ajax_call();
+      
 
       },500);         
    }
 
 
   
- function nnn (){
-
+ function ajax_call (){
+  
   $.ajax({
   url: "/db",
   type: "get", //send it through get method
@@ -89,23 +91,22 @@ div {
   data:({id:ids}),
   
   success: function(response) {
-    //Do Something
-    // console.log(response.render["results"]);
-  //   console.log(ids);
-  //   console.log(response.code);
-  // console.log(response.Code[ids]); 
-    datam = response;
-    console.log(datam.results[ids].code);
+       datam = response;
+    // console.log(datam.results[ids].code);
     console.log(ids);
+
      tableRows =  "<tr><td>"+datam.results[ids].code+"</td> <td>"+datam.results[ids].name+"</td> <td>"+datam.results[ids].population+"</td></tr>";
+     if(ids>=20){
+      $('#tbody1 tr:last').remove();
 
-    //  tableRows.hide();
-    // tableRows.fadeIn("slow");
-
-        $( "#tbody1" ).prepend(tableRows);
-
-       ids++;
-      kk(); 
+     }
+     
+    
+    $( "#tbody1" ).prepend(tableRows);
+                       
+        ids++;
+               
+      timeout(); //calling timeout for 5 secs after displaying each record
       console.log(response);
   },
   error: function(xhr) {
@@ -116,32 +117,6 @@ div {
  }
 
 });
-
-
-      // $.get( "/country", function( data ) {
-        
-
-      //     setTimeout(function(){
-      //       function getData();
-
-      //     },500);    
-
-// function getData(){
-//         $.each(data , function(){
-//             tableRows +=  "<tr><td>"+this.code+"</td> <td>"+this.name+"</td> <td>"+this.population+"</td><td>"+this.latitude+"</td><td>"+this.longitude+"</td></tr>";
-//             docRowCount=docRowCount+1 ;
-
-
-//           });
-// }
-          
-//             $( "#tbody1" ).append(tableRows);
-
-
-//       } );
-
-//     });
-//   });   //get closed here
 
         
     </script>
@@ -154,8 +129,8 @@ div {
 
      
       <button id="button"> Get Data </button>
-      <table id="table1">
-        <thead>
+      <table id="table1" width="100">
+        <thead width="100">
             <tr>
               
               <th>Code</th>
