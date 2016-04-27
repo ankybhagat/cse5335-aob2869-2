@@ -1,4 +1,4 @@
-A barebones Node.js app using Express 4.
+Countries App using Node JS and PostGres database
 
 This application supports the Getting Started with Node on Heroku article - check it out.
 
